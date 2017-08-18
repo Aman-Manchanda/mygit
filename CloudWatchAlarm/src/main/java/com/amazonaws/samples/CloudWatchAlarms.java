@@ -23,16 +23,18 @@ public class CloudWatchAlarms {
 	    
 		StandardUnit su=null;
 		
-		String UserAccountNo="274304159946";
+		String UserAccountNo=;
 		
-		String UserAccountName="Progressive_Development";
+		String UserAccountName=;
 		
-		String snsName="Progressive_Development";
+		String snsName=;
+		
+		String MasterAccountNo=;
 	    
 		//Double Threshhold[]={250.0, 500.0, 750.0, 1000.0,1250.0,1900.0};
 		Double Threshhold[]={100.0, 1000.0, 5000.0, 10000.0,15000.0,20000.0,30000.0,50000.0,75000.0,99000.0};
-		//BasicAWSCredentials bcp=new BasicAWSCredentials("AKIAIIILKAFMIZN3LROQ","tiIj3ma9u46f/rulEQBeksf1pf83I5Jv41pZwiFp");
-		BasicAWSCredentials bcp=new BasicAWSCredentials("AKIAISRKTYXPNUMSOGQQ","s8zmRPBnMxAcDtvE/tjr3gYV4unQG8goUILFSNs9");
+		
+		BasicAWSCredentials bcp=new BasicAWSCredentials();
 		AmazonCloudWatchClient cw =new AmazonCloudWatchClient(bcp);
 		cw.setRegion((Region)Region.getRegion(Regions.US_EAST_1));
 
@@ -50,7 +52,7 @@ public class CloudWatchAlarms {
 			    dimension.add(dimension2);
                List<String> alarmActions=new ArrayList<String>();
               // alarmActions.add("arn:aws:sns:us-east-1:558465961352:"+snsName);
-               alarmActions.add("arn:aws:sns:us-east-1:481183158878:"+snsName);
+               alarmActions.add("arn:aws:sns:us-east-1:"+MasterAccountNo+":"+snsName);
 	for(Double i : Threshhold ){		    
 			try{
 			PutMetricAlarmRequest request = new PutMetricAlarmRequest();
